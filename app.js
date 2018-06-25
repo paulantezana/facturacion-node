@@ -14,7 +14,7 @@ const indexRouter = require('./router');
 const app = express();
 
 // Connect database
-mongoose.connect('mongodb://localhost/compraventa')
+mongoose.connect( process.env.MONGODB || 'mongodb://localhost/compraventa')
   .then(db => console.log('DB Connected'))
   .catch(err => console.log(err));
 
