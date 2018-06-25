@@ -1,0 +1,46 @@
+extends template/layout
+
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.plus.square.icon
+        | Nuevo
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
+
+block content
+    table.ui.celled.table.striped
+        thead
+            tr
+                th Nombre
+                th Cantidad
+                th Precio
+                th Aciones
+        tbody
+            each producto in productos
+                tr
+                    td= producto.nombre
+                    td= producto.cantidad
+                    td= 'S/. ' + producto.precio
+                    td
+                        a(href="/producto/view/" + producto._id).ui.compact.labeled.icon.button.blue
+                            i.icon.eye
+                            | Ver
+    .ui.modal.modal__new
+        i.icon.close
+        .header Nuevo Producto
+        .content
+            form(action="/producto/nuevo", method="post").ui.form
+                .field
+                    label(for="nombre") Nombre
+                    input#nombre(type="text", name="nombre" placeholder="Nombre" required)
+                .field
+                    label(for="cantidad") Cantidad
+                    input#cantidad(type="number", name="cantidad" placeholder="Cantidad" required)
+                .field
+                    label(for="precio") Precio
+                    input#precio(type="number", name="precio" placeholder="Precio" required)
+                button(type="submit").ui.button.primary Guardar

@@ -1,0 +1,53 @@
+extends template/layout
+block styles
+
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.plus.square.icon
+        | Nuevo
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
+
+block content
+    table.ui.celled.table.striped#datatable
+        thead
+            tr
+                th Identificacion
+                th Nombre
+                th Direccion
+                th Telefono
+                th Aciones
+        tbody
+            each tercero in terceros
+                tr
+                    td= tercero.identificacion
+                    td= tercero.nombre
+                    td= tercero.direccion
+                    td= tercero.telefono
+                    td
+                        a(href="/tercero/view/" + tercero._id).ui.compact.labeled.icon.button.blue
+                            i.icon.eye
+                            | Ver
+    .ui.modal.modal__new
+        i.icon.close
+        .header Nuevo Producto
+        .content
+            form(action="/tercero/nuevo", method="post").ui.form
+                .field
+                    label(for="identificacion") Identificacion
+                    input#identificacion(type="text", name="identificacion" placeholder="Identificacion" required)
+                .field
+                    label(for="nombre") Nombre
+                    input#nombre(type="text", name="nombre" placeholder="Nombre" required)
+                .field
+                    label(for="direccion") Direccion
+                    input#direccion(type="text", name="direccion" placeholder="Direccion" required)
+                .field
+                    label(for="telefono") Telefono
+                    input#telefono(type="text", name="telefono" placeholder="Telefono" required)
+                button(type="submit").ui.button.primary Guardar
+    .ui.modal.modal__print

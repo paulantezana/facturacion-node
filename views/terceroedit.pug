@@ -1,0 +1,28 @@
+extends template/layout
+
+block tools
+
+block content
+    form(action="/tercero/update/" + tercero._id, method="post").ui.form
+        .field
+            label(for="identificacion") Identificacion
+            input#identificacion(type="text", name="identificacion" placeholder="Identificacion" value= tercero.identificacion required)
+        .field
+            label(for="nombre") Nombre
+            input#nombre(type="text", name="nombre" placeholder="Nombre" value= tercero.nombre required)
+        .field
+            label(for="direccion") Direccion
+            input#direccion(type="text", name="direccion" placeholder="Direccion" value= tercero.direccion required)
+        .field
+            label(for="telefono") Telefono
+            input#telefono(type="text", name="telefono" placeholder="Telefono" value= tercero.telefono required)
+        button(type="submit").ui.button.primary Guardar
+        .ui.button.red.button__delete#confirm Eliminar
+    .ui.mini.modal.modal__confirm
+        .header Eliminar tercero
+        .content
+            p Esta seguro de eliminar
+            p= tercero.nombre
+        .actions
+            a(href="/tercero/eliminar/" + tercero._id ).ui.approve.blue.button Si
+            .ui.cancel.button No

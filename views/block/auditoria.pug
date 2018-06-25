@@ -1,0 +1,26 @@
+.ui.segment
+    h4 AUDITORIA
+    .ui.fluid.accordion.styled
+        if auditorias
+            each auditoria in auditorias
+                .title
+                    .sn-avatar
+                        img.ui.avatar.image(src='/images/logo.jpg')
+                        .sn-avatar__content
+                            a(href="/perfil").perfil= auditoria.usuario.usuario
+                            div= auditoria.accion + " - " 
+                                if auditoria.tabla
+                                    span= auditoria.tabla
+                        .icon.dropdown(style="margin-left: auto")
+                .content
+                    .transition.hidden
+                        if auditoria.anterior
+                            .oldData
+                                pre: code
+                                    each value, key in auditoria.anterior
+                                        = key + ': ' + value + '\n'
+                        if auditoria.nuevo
+                            .newData
+                                pre: code
+                                    each val, index in auditoria.nuevo
+                                        = index + ': ' + val + '\n'

@@ -1,0 +1,57 @@
+extends template/layout
+
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.cart.icon
+        | Nueva Compra
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
+
+
+block content
+    table.ui.celled.table.striped
+        thead
+            tr
+                th fecha
+                th Proveedor
+                th Producto
+                th Cantidad
+                th Valor
+                th Usuario
+        tbody
+            each compra in compras
+                tr
+                    td= compra.fecha
+                    td= compra.proveedor.nombre
+                    td= compra.producto.nombre
+                    td= compra.cantidad
+                    td= compra.valor
+                    td= compra.usuario.nombre
+    .ui.modal.modal__new
+        i.icon.close
+        .header Nuevo Venta
+        .content
+            form(action="/comprar", method="post").ui.form
+                .field
+                    label(for="proveedor") Proveedor
+                    select#perfil(name="proveedor").ui.search.dropdown
+                        each proveedor in proveedores
+                            option(value= proveedor._id )= proveedor.nombre
+                .field
+                    label(for="producto") Productos
+                    select#perfil(name="producto").ui.search.dropdown
+                        each producto in productos
+                            option(value= producto._id )= producto.nombre
+                .field
+                    label(for="cantidad") Cantidad
+                    input#cantidad(type="number", name="cantidad" placeholder="Cantidad" required)
+                .field
+                    label(for="valor") Valor
+                    input#precio(type="number", name="valor" placeholder="Valor" required)
+                button(type="submit").ui.labeled.icon.button.blue
+                    i.cart.icon
+                    | Comprar

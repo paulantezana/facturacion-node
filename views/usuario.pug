@@ -1,0 +1,52 @@
+extends template/layout
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.plus.square.icon
+        | Nuevo
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
+
+block content
+    table.ui.celled.table.striped.basic
+        thead
+            tr
+                th Usuario
+                th Nombre
+                th Perfil
+                th Aciones
+        tbody
+            each usuario in usuarios
+                tr
+                    td= usuario.usuario
+                    td= usuario.nombre
+                    td= usuario.perfil
+                    td
+                        a(href="/usuario/view/" + usuario._id).ui.compact.labeled.icon.button.blue
+                            i.icon.eye
+                            | Ver
+    .ui.modal.modal__new
+        i.icon.close
+        .header Nuevo Usuario
+        .content
+            form(action="/usuario/nuevo", method="post").ui.form
+                .field
+                    label(for="usuario") Usuario
+                    input#usuario(type="text", name="usuario" placeholder="Usuario" required)
+                .field
+                    label(for="nombre") Nombre
+                    input#nombre(type="text", name="nombre" placeholder="Nombre" required)
+                .field
+                    label(for="perfil") Nombre
+                    select#perfil(name="perfil").ui.search.dropdown
+                        option(value="ADMIN") Admin
+                        option(value="USUARIO" selected) Usuario
+                        option(value="VENTA") Ventas
+                .field
+                    label(for="clave") Contraseña
+                    input#clave(type="password", name="clave" placeholder="Contraseña" required)
+                button(type="submit").ui.button.primary Guardar
+    .ui.modal.modal__print

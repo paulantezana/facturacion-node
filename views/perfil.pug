@@ -1,0 +1,12 @@
+extends template/layout
+
+block content
+    .ui.top.banner.test.ad(data-text= title,style="width: 100%; background: #0f8ed8")
+    .ui.middle.aligned.selection.list
+        .item Usuario: 
+            span.content= usuario.usuario
+        .item Nombre: 
+            span.content= usuario.nombre
+        .item Perfil: 
+            span.content= usuario.perfil
+    script

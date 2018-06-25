@@ -1,0 +1,29 @@
+extends template/layout
+
+block content
+    form(action="/usuario/update/" + usuario._id, method="post").ui.form
+        .field
+            label(for="usuario") Usuario
+            input#usuario(type="text", name="usuario" placeholder="Usuario" required value= usuario.usuario)
+        .field
+            label(for="nombre") Nombre
+            input#nombre(type="text", name="nombre" placeholder="Nombre" required value= usuario.nombre)
+        .field
+            label(for="perfil") Nombre
+            select#perfil(name="perfil").ui.search.dropdown
+                option(value="ADMIN") Admin
+                option(value="USUARIO" selected) Usuario
+                option(value="VENTA") Ventas
+        .field
+            label(for="clave") Contraseña
+            input#clave(type="password", name="clave" placeholder="Contraseña" required)
+        button(type="submit").ui.button.primary Guardar
+        .ui.button.red.button__delete#confirm Eliminar
+    .ui.mini.modal.modal__confirm
+        .header Eliminar usuario
+        .content
+            p Esta seguro de eliminar
+            p= usuario.usuario
+        .actions
+            a(href="/usuario/eliminar/" + usuario._id ).ui.approve.blue.button Si
+            .ui.cancel.button No

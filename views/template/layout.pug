@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title= title
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js")
+        block styles
+        link(rel='stylesheet', href='/main.css')
+    body
+        .layout-container
+            .admin-sidebar
+                .admin-sidebar__header
+                    img(src="/images/logo.svg", alt="")
+                .ui.divider
+                .admin-sidebar__header MOVIMIENTO
+                a(href="/").admin-sidebar__item
+                    i.icon.grid.home
+                    | Home
+                a(href="/compra").admin-sidebar__item
+                    i.icon.grid.cart
+                    | Compra
+                a(href="/venta").admin-sidebar__item
+                    i.icon.grid.cart
+                    | Venta
+                .ui.divider
+                .admin-sidebar__header CRUD
+                a(href="/usuario").admin-sidebar__item
+                    i.icon.grid.user
+                    | Usuario
+                a(href="/producto").admin-sidebar__item
+                    i.icon.grid.cube
+                    | Producto
+                a(href="/tercero").admin-sidebar__item
+                    i.icon.grid.users
+                    | Tercero
+            .admin-content
+                header.header
+                    .ui.menu.borderless.menu__top
+                        .item= title
+                        a.item.openbtn.right(href="")
+                            i.icon.globe
+                        a.item.openbtn(href="")
+                            i.icon.bell
+                        .ui.item.pointing.dropdown
+                            .text
+                                img.ui.avatar.image(src="/images/logo.jpg", alt="") 
+                                | Jenny Hess
+                            i.dropdown.icon
+                            .menu
+                                a(href="/perfil").item
+                                    i.icon.user
+                                    | Perfil
+                                .item
+                                    i.icon.cogs
+                                    | Configuracion
+                                a(href="/logout").item 
+                                    i.icon.sign.out.alternate
+                                    | Cerrar Sesion
+                .data-container
+                    .data__content
+                        .data__content__tools
+                            block tools
+                        .data__content__content
+                            block content
+                    .data__audit
+                        include ../block/auditoria
+        script(src="/main.js")

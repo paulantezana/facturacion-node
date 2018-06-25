@@ -1,0 +1,19 @@
+extends template/bassic
+block styles
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css")
+block content
+    .login-container
+        .login-container__header
+            img(src="/images/logo.svg", alt="logo").logo
+            h1= title
+            p Sistema de facturación
+        form(action="/login", method="post").ui.form
+            .field
+                label(for="usuario") Usuario
+                input#usuario(type="text", name="usuario")
+            .field
+                label(for="clave") Contraseña
+                input#clave(type="password", name="clave")
+            button(type="submit").ui.button.fluid.blue LOGIN
+        if erros
+            .ui.red.message= erros

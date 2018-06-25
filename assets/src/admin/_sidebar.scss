@@ -1,0 +1,26 @@
+%item{
+    line-height: 2.8rem;
+    padding: 0 1.3rem;
+    color: inherit;
+}
+.admin-sidebar{
+    display: flex;
+    flex-direction: column;
+    &__item{
+        display: block;
+        @extend %item;
+        &:hover{
+            background: darken($sidebar-1,3);
+            color: #F7F8F8;
+        }
+        .icon{
+            margin-right: 1rem;
+        }
+    }
+    &__header{
+        @extend %item;
+        img{
+            margin: 2rem 0;
+        }
+    }
+}

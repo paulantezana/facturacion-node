@@ -1,0 +1,23 @@
+extends template/layout
+
+block tools
+
+block content
+    form(action="/producto/update/" + producto._id, method="post").ui.form
+        input#cantidad(type="hidden", name="cantidad" placeholder="Cantidad" required value= producto.cantidad)
+        .field
+            label(for="nombre") Nombre
+            input#nombre(type="text", name="nombre" placeholder="Nombre" required value= producto.nombre)
+        .field
+            label(for="precio") Precio
+            input#precio(type="number", name="precio" placeholder="Precio" required value= producto.precio)
+        button(type="submit").ui.button.primary Guardar
+        .ui.button.red.button__delete#confirm Eliminar
+    .ui.mini.modal.modal__confirm
+        .header Eliminar producto
+        .content
+            p Esta seguro de eliminar
+            p= producto.nombre
+        .actions
+            a(href="/producto/eliminar/" + producto._id ).ui.approve.blue.button Si
+            .ui.cancel.button No
