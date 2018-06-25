@@ -1,6 +1,6 @@
 {
-  "name": "compraventa-node",
-  "version": "0.0.0",
+  "name": "facturacion-node",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "nodemon ./bin/www",
